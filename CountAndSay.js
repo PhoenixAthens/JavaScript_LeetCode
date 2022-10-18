@@ -1,6 +1,6 @@
 var countAndSay = function(n) {
     if(n==1){
-        return counter(n);
+        return "1";
     }else{
         return counter(countAndSay(n-1));
     }
