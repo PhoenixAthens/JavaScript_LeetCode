@@ -39,7 +39,21 @@ function LongestWord_IntermediateSol(str){
         return Math.max(x,y.length);
     },0);
 }
-
+function LongestWord_AdvancesSolution(str){
+    function mainWork(arr){
+        if(arr.length===1){
+            return arr[0].length;
+        }
+        if(arr[0].length>=arr[1].length){
+            arr.splice(1,1);
+            return mainWork(arr);
+        }else{
+            return mainWork(arr.splice(1,arr.length));
+        }
+        return arr[0].length;
+    }
+    return mainWork(str.split(/(\W)/));
+}
 console.log(`Generic: ${LongestWord_GenericSolution("The quick brown fox jumps over the lazy dog")}, Better: ${LongestWord_Solution1("The quick brown fox jumps over the lazy dog")}`);
 console.log(`Generic: ${LongestWord_GenericSolution("I love solving problems")}, Better: ${LongestWord_Solution1("I love solving problems")}`);
 console.log(`Generic: ${LongestWord_GenericSolution("Hello, World!")}, Better: ${LongestWord_Solution1("Hello, World!")}`);
@@ -61,3 +75,20 @@ console.log(`Intermediate Solution: ${LongestWord_IntermediateSol("Hello, World!
 console.log(`Intermediate Solution: ${LongestWord_IntermediateSol("")}`)
 console.log(`Intermediate Solution: ${LongestWord_IntermediateSol("A")}`)
 
+//splice is used for replacing elements, this affects the original array.
+let arr=["a","b","c","d"];
+console.log(["a","b","c","d"].splice(0,3,"k","l","m"));
+arr.splice(0,3,"k","l","m");
+console.log(arr);
+//slice is used for just creating a new array from an old one while the original array stays intact!
+let barr=["a","b","c","d"]
+console.log(["a","b","c","d"].slice(1,this.length));
+barr.slice(1,this.length);
+console.log(barr);
+
+console.log("----------------------------------------------");
+console.log(`Intermediate Solution: ${LongestWord_AdvancesSolution("The quick brown fox jumps over the lazy dog")}`)
+console.log(`Intermediate Solution: ${LongestWord_AdvancesSolution("I love solving problems")}`)
+console.log(`Intermediate Solution: ${LongestWord_AdvancesSolution("Hello, World! super-long")}`)
+console.log(`Intermediate Solution: ${LongestWord_AdvancesSolution("")}`)
+console.log(`Intermediate Solution: ${LongestWord_AdvancesSolution("A")}`)
