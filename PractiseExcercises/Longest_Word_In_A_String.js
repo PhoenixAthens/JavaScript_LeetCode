@@ -1,7 +1,7 @@
 const generator=require("./GenerateTestCases");
 //The generic solution will cause problems when the strings contain punctuation marks!
 function LongestWord_GenericSolution(str){
-    const arrayFromString = str.split(" ");
+    const arrayFromString = str.split(/(\W)/);
     let maxLen=0;
     for(let i=0;i<arrayFromString.length;i++){
         maxLen=Math.max(maxLen,arrayFromString[i].length);
