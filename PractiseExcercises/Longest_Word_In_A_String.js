@@ -1,3 +1,4 @@
+const generator=require("./GenerateTestCases");
 //The generic solution will cause problems when the strings contain punctuation marks!
 function LongestWord_GenericSolution(str){
     const arrayFromString = str.split(" ");
@@ -45,3 +46,6 @@ console.log(`One with Better if-else: ${LongestWord_Solution1ButBetter("I love s
 console.log(`One with Better if-else: ${LongestWord_Solution1ButBetter("Hello, World!")}`);
 console.log(`One with Better if-else: ${LongestWord_Solution1ButBetter("")}`);
 console.log(`One with Better if-else: ${LongestWord_Solution1ButBetter("A")}`);
+let string=generator();
+console.log(string);
+console.log(`using generated testCase: ${LongestWord_Solution1ButBetter(string)} `)
