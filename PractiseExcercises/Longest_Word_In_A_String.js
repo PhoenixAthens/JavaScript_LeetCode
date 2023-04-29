@@ -34,6 +34,11 @@ function LongestWord_Solution1ButBetter(str){
     }
     return Math.max(maxLen,tempLen);
 }
+function LongestWord_IntermediateSol(str){
+    return str.split(/(\W)/).reduce((x,y)=>{
+        return Math.max(x,y.length);
+    },0);
+}
 
 console.log(`Generic: ${LongestWord_GenericSolution("The quick brown fox jumps over the lazy dog")}, Better: ${LongestWord_Solution1("The quick brown fox jumps over the lazy dog")}`);
 console.log(`Generic: ${LongestWord_GenericSolution("I love solving problems")}, Better: ${LongestWord_Solution1("I love solving problems")}`);
@@ -49,3 +54,10 @@ console.log(`One with Better if-else: ${LongestWord_Solution1ButBetter("A")}`);
 let string=generator();
 console.log(string);
 console.log(`using generated testCase: ${LongestWord_Solution1ButBetter(string)} `)
+console.log("----------------------------------------------");
+console.log(`Intermediate Solution: ${LongestWord_IntermediateSol("The quick brown fox jumps over the lazy dog")}`)
+console.log(`Intermediate Solution: ${LongestWord_IntermediateSol("I love solving problems")}`)
+console.log(`Intermediate Solution: ${LongestWord_IntermediateSol("Hello, World! super-long")}`)
+console.log(`Intermediate Solution: ${LongestWord_IntermediateSol("")}`)
+console.log(`Intermediate Solution: ${LongestWord_IntermediateSol("A")}`)
+
